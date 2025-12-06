@@ -1,0 +1,12 @@
+name: wruJoin
+version: '1.0.0'
+main: dev.naw0ke.wrusmp.WruJoinPlugin
+api-version: '1.21'
+authors: [ Naw0ke ]
+description: Join message plugin for WruSMP
+website: https://wrus.net
+dependencies:
+  server:
+    SuperVanish:
+      load: BEFORE
+      required: false
