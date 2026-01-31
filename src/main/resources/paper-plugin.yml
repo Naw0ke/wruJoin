@@ -1,5 +1,5 @@
 name: wruJoin
-version: '1.0.0'
+version: '${version}'
 main: dev.naw0ke.wrusmp.WruJoinPlugin
 api-version: '1.21'
 authors: [ Naw0ke ]
