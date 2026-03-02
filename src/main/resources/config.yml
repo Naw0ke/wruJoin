@@ -2,7 +2,9 @@ settings:
   join-message: "<dark_gray>[<green>+<dark_gray>] <gray><player>"
   quit-message: "<dark_gray>[<red>-<dark_gray>] <gray><player>"
 
-  join-sound: "minecraft:entity.player.levelup" # Leave empty or comment out (#) to disable
+  join-sound:
+    sound: "entity.player.levelup" # Leave empty or comment out (#) to disable
+    pitch: 0.5
 
   vanish-check: true # If the player is in vanish mode, no join/quit message will be sent.
 

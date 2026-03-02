@@ -2,7 +2,7 @@ package dev.naw0ke.wrusmp;
 
 import dev.naw0ke.wrusmp.command.MainCommand;
 import dev.naw0ke.wrusmp.config.YamlConfig;
-import dev.naw0ke.wrusmp.listener.JoinListener;
+import dev.naw0ke.wrusmp.listener.ConnectionListener;
 import dev.naw0ke.wrusmp.listener.VanishListener;
 import dev.naw0ke.wrusmp.util.ChatUtils;
 import dev.naw0ke.wrusmp.util.VanishUtils;
@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -41,23 +40,19 @@ public final class WruJoinPlugin extends JavaPlugin {
         instance = this;
         config.create();
         registerCommands();
-        this.getServer().getPluginManager().registerEvents(new JoinListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new ConnectionListener(this), this);
         if (VanishUtils.isVanishPluginEnabled()) {
             this.getServer().getPluginManager().registerEvents(new VanishListener(this), this);
             Bukkit.getConsoleSender().sendMessage("[WruJoin] [+] SuperVanish hook enabled.");
         }
-        Bukkit.getConsoleSender().sendMessage("[WruJoin] [?] Plugin enabled. Developed by Naw0ke.");
+        Bukkit.getConsoleSender().sendMessage("[WruJoin] Plugin enabled. Developed by Naw0ke.");
         new Metrics(this, 27905);
     }
 
     @Override
     public void onDisable() {
-        List.of("wrujoin").forEach(this::unregisterCommand);
-        Bukkit.getConsoleSender().sendMessage("[WruJoin] [!] Plugin disabled. Developed by Naw0ke.");
-    }
-
-    private void unregisterCommand(String name) {
-        this.getBukkitCommands(this.getCommandMap()).remove(name);
+        getBukkitCommands(getCommandMap()).remove("wrujoin");
+        Bukkit.getConsoleSender().sendMessage("[WruJoin] Plugin disabled. Developed by Naw0ke.");
     }
 
     @NotNull

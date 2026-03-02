@@ -1,11 +1,10 @@
 plugins {
     id 'java'
-    id("xyz.jpenilla.run-paper") version "2.3.1"
     id("io.github.goooler.shadow") version "8.1.8"
 }
 
 group = 'dev.naw0ke'
-version = '1.0.0'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
@@ -13,15 +12,13 @@ repositories {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
     }
-    maven {
-        url "https://repo.triumphteam.dev/snapshots"
-    }
+    maven { url "https://repo.triumphteam.dev/snapshots" }
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    compileOnly('org.projectlombok:lombok:1.18.32')
-    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    compileOnly('org.projectlombok:lombok:1.18.42')
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
 
     implementation ("dev.triumphteam:triumph-cmd-bukkit:2.0.0-SNAPSHOT") { exclude group: "com.google.code.gson" }
 
@@ -30,15 +27,6 @@ dependencies {
     compileOnly 'com.github.LeonMangler:SuperVanish:6.2.18-3'
 
     compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
-}
-
-tasks {
-    runServer {
-        // Configure the Minecraft version for our task.
-        // This is the only required configuration besides applying the plugin.
-        // Your plugin's jar (or shadowJar if present) will be used automatically.
-        minecraftVersion("1.21")
-    }
 }
 
 def targetJavaVersion = 21

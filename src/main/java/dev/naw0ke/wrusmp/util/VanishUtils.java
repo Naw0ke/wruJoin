@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 public class VanishUtils {
 
     public static boolean isVanished(Player player) {
-
         if (!WruJoinPlugin.getInstance()
                 .getConfig().getBoolean("settings.vanish-check")
                 || !isVanishPluginEnabled()) {
@@ -23,4 +22,5 @@ public class VanishUtils {
                 .getPluginManager()
                 .isPluginEnabled("SuperVanish");
     }
+
 }
