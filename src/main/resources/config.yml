@@ -1,0 +1,14 @@
+settings:
+  join-message: "<dark_gray>[<green>+<dark_gray>] <gray><player>"
+  quit-message: "<dark_gray>[<red>-<dark_gray>] <gray><player>"
+
+  join-sound:
+    sound: "entity.player.levelup"  # keep it empty to disable sound
+    pitch: 2.0
+
+  vanish-check: true # If the player is in vanish mode, no join/quit message will be sent.
+
+messages:
+  no-permission: "<dark_gray>-> <red>You do not have permission to use this command!"
+  unknown-command: "<dark_gray>-> <red>Unknown command."
+  reloaded: "<dark_gray>-> <green>Reloaded the config."
