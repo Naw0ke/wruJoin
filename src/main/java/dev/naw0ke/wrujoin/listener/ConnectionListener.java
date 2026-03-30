@@ -24,11 +24,11 @@ public class ConnectionListener implements Listener {
 
         event.joinMessage(null);
 
-        if(!VanishUtils.isVanished(player)) {
-            plugin.getServer().sendActionBar(
-                    ChatUtils.format(plugin.getConfig().getString("settings.join-message"),
-                            Placeholder.unparsed("player", player.getName())
-                    ));
+        if (!VanishUtils.isVanished(player)) {
+            ChatUtils.sendTypedMessage(plugin.getServer(), plugin.getConfig(),
+                    "settings.join-message",
+                    Placeholder.unparsed("player", player.getName())
+            );
         }
 
         String soundKey = plugin.getConfig().getString("settings.join-sound.sound");
@@ -44,11 +44,11 @@ public class ConnectionListener implements Listener {
 
         event.quitMessage(null);
 
-        if(!VanishUtils.isVanished(player)) {
-            plugin.getServer().sendActionBar(
-                    ChatUtils.format(plugin.getConfig().getString("settings.quit-message"),
-                            Placeholder.unparsed("player", player.getName())
-                    ));
+        if (!VanishUtils.isVanished(player)) {
+            ChatUtils.sendTypedMessage(plugin.getServer(), plugin.getConfig(),
+                    "settings.quit-message",
+                    Placeholder.unparsed("player", player.getName())
+            );
         }
     }
 

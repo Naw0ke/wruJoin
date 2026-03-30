@@ -3,8 +3,9 @@ version: '${version}'
 main: dev.naw0ke.wrujoin.WruJoinPlugin
 api-version: '1.21'
 authors: [ Naw0ke ]
-description: Join message plugin for WruSMP
-website: https://wrus.net
+description: A high-quality join message plugin.
+website: https://stmstudios.net
+folia-supported: true
 dependencies:
   server:
     SuperVanish:

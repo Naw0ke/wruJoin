@@ -19,20 +19,20 @@ public class VanishListener implements Listener {
     public void onVanish(PlayerHideEvent event) {
         Player player = event.getPlayer();
 
-        plugin.getServer().sendActionBar(
-                ChatUtils.format(plugin.getConfig().getString("settings.quit-message"),
-                        Placeholder.unparsed("player", player.getName())
-                ));
+        ChatUtils.sendTypedMessage(plugin.getServer(), plugin.getConfig(),
+                "settings.join-message",
+                Placeholder.unparsed("player", player.getName())
+        );
     }
 
     @EventHandler
     public void onUnVanish(PlayerShowEvent event) {
         Player player = event.getPlayer();
 
-        plugin.getServer().sendActionBar(
-                ChatUtils.format(plugin.getConfig().getString("settings.join-message"),
-                        Placeholder.unparsed("player", player.getName())
-                ));
+        ChatUtils.sendTypedMessage(plugin.getServer(), plugin.getConfig(),
+                "settings.quit-message",
+                Placeholder.unparsed("player", player.getName())
+        );
     }
 
 }

@@ -1,9 +1,12 @@
 package dev.naw0ke.wrujoin.util;
 
+import dev.naw0ke.wrujoin.WruJoinPlugin;
+import dev.naw0ke.wrujoin.config.YamlConfig;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
@@ -30,6 +33,21 @@ public class ChatUtils {
 
     public static void sendMessage(CommandSender player, List<Component> components) {
         components.forEach(s -> ChatUtils.sendMessage(player, s));
+    }
+
+    public static void sendTypedMessage(Server server, YamlConfig config, String path, TagResolver... placeholders) {
+        String type = config.getString(path + ".type", "ACTIONBAR");
+        String message = config.getString(path + ".message", "");
+
+        if (message.isEmpty()) return;
+
+        Component formatted = format(message, placeholders);
+
+        switch (type.toUpperCase()) {
+            case "CHAT" -> server.sendMessage(formatted);
+            case "ACTIONBAR" -> server.sendActionBar(formatted);
+            default -> WruJoinPlugin.getInstance().getLogger().warning("Unknown message type '" + type + "' at " + path);
+        }
     }
 
 }
