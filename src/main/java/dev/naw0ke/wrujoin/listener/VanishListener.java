@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 @RequiredArgsConstructor
@@ -15,22 +16,23 @@ public class VanishListener implements Listener {
 
     private final WruJoinPlugin plugin;
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onVanish(PlayerHideEvent event) {
         Player player = event.getPlayer();
 
         ChatUtils.sendTypedMessage(plugin.getServer(), plugin.getConfig(),
-                "settings.join-message",
-                Placeholder.unparsed("player", player.getName())
+                "settings.quit-message",
+                Placeholder.unparsed("player", player.getName()),
+                Placeholder.unparsed("uniquejoin", "")
         );
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onUnVanish(PlayerShowEvent event) {
         Player player = event.getPlayer();
 
         ChatUtils.sendTypedMessage(plugin.getServer(), plugin.getConfig(),
-                "settings.quit-message",
+                "settings.join-message",
                 Placeholder.unparsed("player", player.getName())
         );
     }

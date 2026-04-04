@@ -12,6 +12,7 @@ It gives server owners complete control over player join and leave notifications
 * 🌈 **Modern Colors:** Native support for **HEX (RGB)** and **Gradients**.
 * ⚡ **High Performance:** Optimized to ensure zero impact on your server's TPS.
 * 🔄 **Instant Reload:** Update your configuration on-the-fly without restarting.
+* 📺 **Join Titles:** Fully configurable title and subtitle that appears when a player joins.
 * 🔊 **Join Sounds:** Fully configurable sound effects that are triggered when a player joins.
 * 🕵️ **Vanish Support:** Fully compatible with **SuperVanish**. Automatically handles fake join/leave messages when administrators vanish or reappear.
 
