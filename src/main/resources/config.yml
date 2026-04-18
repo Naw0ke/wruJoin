@@ -1,6 +1,6 @@
 settings:
   join-message:
-    type: ACTIONBAR # types: ACTIONBAR, CHAT
+    type: ACTIONBAR
     message: "<dark_gray>[<green>+<dark_gray>] <gray><player> <white><uniquejoin>"
   quit-message:
     type: ACTIONBAR
@@ -16,7 +16,35 @@ settings:
     sound: "entity.player.levelup"
     pitch: 2.0
 
-  vanish-check: true # If the player is in vanish mode, no join/quit message will be sent.
+  first-join:
+    title:
+      enabled: true
+      title: "<#D36E97><bold>Welcome, <player>!"
+      subtitle: "<white>Your first time here — enjoy your stay!"
+    sound:
+      enabled: true
+      sound: "ui.toast.challenge_complete"
+      pitch: 1.0
+    message:
+      enabled: true
+      lines:
+        - ""
+        - "<#D36E97><bold>Welcome to the server!</bold>"
+        - "<gray>You are joining as player <white><uniquejoin><gray>."
+        - "<gray>Make sure to read the rules and have fun!"
+        - ""
+
+  motd:
+    enabled: true
+    lines:
+      - ""
+      - "<#D36E97><bold>  Welcome, <player>!</bold>"
+      - ""
+      - "<gray>  <white>Website<gray>: <#FFA8CB>example.com"
+      - "<gray>  <white>Discord<gray>: <#FFA8CB>discord.gg/example"
+      - ""
+
+  vanish-check: true
 
 messages:
   no-permission: "<dark_gray>-> <red>You do not have permission to use this command!"
