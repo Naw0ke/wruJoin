@@ -47,4 +47,12 @@ public class YamlConfig extends YamlConfiguration {
         }
     }
 
+    public void persist() {
+        try {
+            this.save(this.file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

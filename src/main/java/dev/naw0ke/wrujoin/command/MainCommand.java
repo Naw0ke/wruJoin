@@ -31,7 +31,7 @@ public class MainCommand extends BaseCommand {
 
     @SubCommand("reload")
     public void onReload(CommandSender sender) {
-        plugin.getConfig().reload();
+        plugin.reloadPluginConfig();
 
         ChatUtils.sendMessage(sender, ChatUtils.format(plugin.getConfig().getString("messages.reloaded")));
         sender.playSound(Sound.sound(Key.key("entity.villager.yes"), Sound.Source.MASTER, 1.0f, 1.0f));

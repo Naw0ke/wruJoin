@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
 public final class WruJoinPlugin extends JavaPlugin {
@@ -32,6 +33,7 @@ public final class WruJoinPlugin extends JavaPlugin {
     private static WruJoinPlugin instance;
 
     private final YamlConfig config = new YamlConfig(this, "config.yml", true);
+    private final AtomicInteger uniqueJoinCounter = new AtomicInteger();
 
     private BukkitCommandManager<CommandSender> commandManager;
 
@@ -40,6 +42,7 @@ public final class WruJoinPlugin extends JavaPlugin {
         instance = this;
 
         config.create();
+        uniqueJoinCounter.set(config.getInt("internal.unique-join-counter", 0));
 
         registerCommands();
 
@@ -101,6 +104,18 @@ public final class WruJoinPlugin extends JavaPlugin {
                 ChatUtils.sendMessage(sender, ChatUtils.format(config.getString("messages.unknown-command"))));
         commandManager.registerMessage(BukkitMessageKey.NO_PERMISSION, (sender, invalidArgumentContext) ->
                 ChatUtils.sendMessage(sender, ChatUtils.format(config.getString("messages.no-permission"))));
+    }
+
+    public void reloadPluginConfig() {
+        config.reload();
+        uniqueJoinCounter.set(config.getInt("internal.unique-join-counter", 0));
+    }
+
+    public int nextUniqueJoinCount() {
+        int updated = uniqueJoinCounter.incrementAndGet();
+        config.set("internal.unique-join-counter", updated);
+        config.persist();
+        return updated;
     }
 
 }
